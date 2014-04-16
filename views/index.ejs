@@ -38,19 +38,24 @@
           <h4 class="modal-title modalTitle" id="newOnelinerModalLabel">Submit your own Random Mule Oneliner</h4>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label for="onelinerText">Oneliner</label>
-            <textarea rows="3" form-control class="form-control" id="onelinerText"></textarea>
+          <div class="alert alert-success" id="onelinerSaved">
+            Thank you for your Mule Onliner! Your Oneliner is awaiting moderation. It will go live soon.
           </div>
-          <div class="form-group">
-            <label for="onelinerSituation">Situation</label>
-            <textarea rows="3" form-control class="form-control" id="onelinerSituation"></textarea>
-          </div>
-          <div class="form-group">
-            <p>Prove that you are from Jaaga. Please answer this question.</p>
-            <label for="jaagaAnswer" id="jaagaQuestion">Loading Question...</label>
-            <input type="text" id="jaagaAnswer" class="form-control">
-            <input type="hidden" id="qid">
+          <div id="newOnelinerForm">
+            <div class="form-group">
+              <label for="onelinerText">Oneliner</label>
+              <textarea rows="3" form-control class="form-control" id="onelinerText"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="onelinerSituation">Situation</label>
+              <textarea rows="3" form-control class="form-control" id="onelinerSituation"></textarea>
+            </div>
+            <div class="form-group">
+              <p>Prove that you are from Jaaga. Please answer this question.</p>
+              <label for="jaagaAnswer" id="jaagaQuestion">Loading Question...</label>
+              <input type="text" id="jaagaAnswer" class="form-control">
+              <input type="hidden" id="qid">
+            </div>
           </div>
         </div>
         <div class="modal-footer">

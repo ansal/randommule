@@ -32,6 +32,13 @@ $('#reloadButton').on('click', function(e){
 
 $('#newOnelinerButton').on('click', function(e){
   e.preventDefault();
+  $('#onelinerSaved').hide();
+  $('#newOnelinerForm').show();
+  $('#saveOnelinerButton').show();
+  $('#onelinerText').val('');
+  $('#onelinerSituation').val('');
+  $('#jaagaAnswer').val('');
+  $('#qid').val('');
   var $button = $(this);
   $button.attr('disabled', true).text('Please wait...');
   var $modal = $('#newOnelinerModal');
@@ -80,7 +87,9 @@ $('#saveOnelinerButton').on('click', function(e){
     },
     success: function(data, textStatus) {
       if(typeof data.error === 'undefined') {
-        alert('Saved');
+        $button.hide();
+        $('#newOnelinerForm').hide();
+        $('#onelinerSaved').fadeIn();
       } else {
         alert(data.error);
       }

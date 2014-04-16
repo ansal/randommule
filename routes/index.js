@@ -13,8 +13,11 @@ exports.index = function(req, res){
 
 exports.question = function(req, res) {
   var qid = getRandomNumber(0, Questions.length - 1);
-  var question = Questions[qid];
-  delete(question.answer)
+  // the earlier version used a delete method which introduced a bug in
+  // answer verifying view
+  var question = {};
+  question.id = Questions[qid].id;
+  question.question = Questions[qid].question;
   res.json(question);
 };
 
@@ -30,7 +33,6 @@ exports.newOneliner = function(req, res) {
   var title = req.body.oneliner;
   var situation = req.body.situation;
   var name = req.body.name;
-  console.log(qid, answer, oneliner)
   if(typeof qid === 'undefined' || 
     typeof answer === 'undefined' ||
     typeof situation === 'undefined' ||
@@ -38,11 +40,12 @@ exports.newOneliner = function(req, res) {
     res.json(403, {error: 'Please enter all required fields'});
     return;
   }
-  title = title.toLowerCase();
+  answer = answer.toLowerCase();
   qid = parseInt(qid, 10);
+  var question = Questions[qid - 1];
   // check whether answer is correct or not
-  console.log(Questions[qid - 1].answer, answer);
-  if(Questions[qid - 1].answer !== answer) {
+  console.log(question.answer, answer);
+  if(question.answer !== answer) {
     res.json({error: 'Incorrect Answer!!! Looks like you are not from Jaaga Study'});
     return;
   }
@@ -50,7 +53,7 @@ exports.newOneliner = function(req, res) {
     title: title,
     situation: situation,
     submittedBy: name,
-    verified: true
+    verified: false
   });
   oneliner.save(function(err, obj){
     if(err) {
