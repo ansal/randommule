@@ -35,3 +35,14 @@ label {
 p {
   color: black;
 }
+.row .footer {
+  margin-top: 10%;
+}
+.footer-text {
+  background: rgba(0, 0, 0, .4);
+  color: white;
+}
+.footer-text > a {
+  color: white;
+  text-decoration: underline;
+}
